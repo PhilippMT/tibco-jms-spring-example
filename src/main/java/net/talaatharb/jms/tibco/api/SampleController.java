@@ -21,7 +21,7 @@ public class SampleController {
 	public String send(@RequestBody String message) {
 		try {
 			jmsService.send(message);
-			return String.format("{\"message\":\"%s\"}", message);
+			return "{\"message\":\"%s\"}".formatted(message);
 		} catch (JmsException e) {
 			throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR,
 					e.getMessage());
